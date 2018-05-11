@@ -1,0 +1,16 @@
+version: '2.0'
+
+services:
+ fpm53:
+  image: hantarex/5.3_fpm_compose:1.6
+  restart: on-failure:10
+  volumes:
+   - /var/www:/var/www
+   - ./run/php:/run/php
+   - /run/mysqld:/run/mysqld
+   - ./log-fpm:/var/log
+   - ./etc:/etc/php
+#   - ./etc/php-fpm.conf:/etc/php-fpm.conf
+#   - ./etc/php.ini:/etc/php/php.ini
+#   - ./etc/www.conf:/etc/www.conf
+  network_mode: "host"
